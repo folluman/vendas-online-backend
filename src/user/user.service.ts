@@ -1,7 +1,7 @@
 // criado a partir do comando nest g service user
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dtos/createUser.dto';
-import { UserEntity } from './interfaces/user.entity';
+import { UserEntity } from './entities/user.entity';
 import * as bcrypt from 'bcrypt'; // biblioteca para encriptar senhas
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';

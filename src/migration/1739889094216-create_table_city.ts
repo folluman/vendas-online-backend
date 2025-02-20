@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class CreateTableCity1739889094216 implements MigrationInterface {
+export class createTableCity1739889094216 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     queryRunner.query(`
             CREATE TABLE public.city (
@@ -12,6 +12,7 @@ export class CreateTableCity1739889094216 implements MigrationInterface {
                 primary key (id),
                 foreign key (state_id) references public.state(id)
             );
+
             CREATE SEQUENCE public.city_id_seq
                 AS integer
                 START WITH 1
@@ -21,13 +22,14 @@ export class CreateTableCity1739889094216 implements MigrationInterface {
                 CACHE 1;
                 
             ALTER SEQUENCE public.city_id_seq OWNED BY public.city.id;
+
             ALTER TABLE ONLY public.city ALTER COLUMN id SET DEFAULT nextval('public.city_id_seq'::regclass);
-            `);
+        `);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     queryRunner.query(`
-        drop table public.city;
-            `);
+            drop table public.city;
+        `);
   }
 }
